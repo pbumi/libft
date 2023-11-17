@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 00:59:46 by pbumidan          #+#    #+#             */
-/*   Updated: 2023/11/14 02:16:07 by pbumidan         ###   ########.fr       */
+/*   Created: 2023/11/04 23:22:27 by pbumidan          #+#    #+#             */
+/*   Updated: 2023/11/16 14:09:07 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void	*dst, const void *src, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t			x;
-	unsigned char	*d;
-	unsigned char	*s;
+	void	*str;
 
-	if (src == NULL && dst == NULL)
-	{
+	if (size && count > SIZE_MAX / size)
 		return (NULL);
-	}
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	x = 0;
-	while (x < n)
+	if (count && size > SIZE_MAX / count)
+		return (NULL);
+	str = (void *)malloc(count * size);
+	if (str == NULL)
+		return (NULL);
+	else if (str != NULL)
 	{
-		d[x] = s[x];
-		x++;
+		ft_bzero(str, count * size);
+		return (str);
 	}
-	return (dst);
 }

@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 00:59:46 by pbumidan          #+#    #+#             */
-/*   Updated: 2023/11/14 02:16:07 by pbumidan         ###   ########.fr       */
+/*   Created: 2023/11/14 18:21:54 by pbumidan          #+#    #+#             */
+/*   Updated: 2023/11/14 18:21:56 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void	*dst, const void *src, size_t n)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	size_t			x;
-	unsigned char	*d;
-	unsigned char	*s;
-
-	if (src == NULL && dst == NULL)
+	if (lst && del)
 	{
-		return (NULL);
+		del(lst->content);
+		free (lst);
 	}
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	x = 0;
-	while (x < n)
-	{
-		d[x] = s[x];
-		x++;
-	}
-	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:01:06 by pbumidan          #+#    #+#             */
-/*   Updated: 2023/11/03 18:41:06 by pbumidan         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:37:50 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	dst_len;
 	size_t	src_len;
 
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
-	if (dstsize <= dst_len)
+	if (dst == NULL && dstsize == 0)
+	{
+		return (src_len);
+	}
+	dst_len = ft_strlen(dst);
+	if ((dst != NULL) && (dstsize <= dst_len))
+	{
 		return (dstsize + src_len);
+	}
 	di = dst_len;
 	si = 0;
 	while (src[si] != '\0' && di + 1 < dstsize)
@@ -36,39 +40,35 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[di] = '\0';
 	return (dst_len + src_len);
 }
-/*
-//main function
 
-#include<stdio.h>
-#include<string.h>
+/* NOTES
+Return values should be dstlen + srclen +1 
 
-void	printresult(char *maindst, const char *src, size_t dstsize)
-{
-	char *dst1 = strdup(maindst);
-	char *dst2 = strdup(maindst);
-    size_t result_len1 = ft_strlcat(dst1, src, dstsize);
-	size_t result_len2 = strlcat(dst2, src, dstsize);
+If dstsize is 0, the function returns the length of src 
+because no characters can be appended.
 
-    printf("ft_ string:%zu, %s\n", result_len1, dst1);
-	printf("std string:%zu, %s\n", result_len2, dst2);
+If dstsize is less than or equal to dst_len, 
+the function returns dstsize + src_len 
+because no characters can be appended beyond the size of the destination buffer.
 
-	free(dst1);
-	free(dst2);
-}
+Before :                || After :
+dst   | src   | size    || dst      | return
+------------------------||--------------------
+abc\0 | xyz\0 | 0       || abc\0    | 3
+abc\0 | xyz\0 | 1       || abc\0    | 4
+abc\0 | xyz\0 | 2       || abc\0    | 5
+abc\0 | xyz\0 | 3       || abc\0    | 6
+abc\0 | xyz\0 | 4       || abc\0    | 6
+abc\0 | xyz\0 | 5       || abcs\0   | 6
+abc\0 | xyz\0 | 6       || abcxy\0  | 6
+abc\0 | xyz\0 | 7       || abcxyz\0 | 6
+abc\0 | xyz\0 | 8       || dstxyz\0 | 6
 
-int main()
-{
-    char md[10] = "12345";
-	printresult(md, "nine", 10);	//normal
-	printresult(md, "\0", 10);	// src is null
-	printresult(md, "display 15", 10); // src is more than dest
-	
-	char md2[0];
-	printresult(md2, "four", 0);	//normal
-	printresult(md2, "four", 5);	// l = src_len
-	printresult(md2, "\0", 0);	// src is null
-	printresult(md2, "display 10", 0); // src is more than dest
-
-    return 0;
-}
+strlcat() appends string src to the end of dst. 
+It will append at most dstsize – strlen(dst) – 1 characters. 
+It will then NUL-terminate, unless dstsize is 0 
+or the original dst string was longer than dstsize 
+(in practice this should not happen 
+as it means that either dstsize is incorrect 
+or that dst is not a proper string).
 */

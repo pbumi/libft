@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 00:59:46 by pbumidan          #+#    #+#             */
-/*   Updated: 2023/11/14 02:16:07 by pbumidan         ###   ########.fr       */
+/*   Created: 2023/11/08 22:36:52 by pbumidan          #+#    #+#             */
+/*   Updated: 2023/11/15 19:12:57 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void	*dst, const void *src, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t			x;
-	unsigned char	*d;
-	unsigned char	*s;
+	long int	nb;
 
-	if (src == NULL && dst == NULL)
+	nb = n;
+	if (nb < 0)
 	{
-		return (NULL);
+		ft_putchar_fd('-', fd);
+		nb = (nb * -1);
 	}
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	x = 0;
-	while (x < n)
+	if (nb > 9)
 	{
-		d[x] = s[x];
-		x++;
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd(nb % 10 + '0', fd);
 	}
-	return (dst);
+	else
+		ft_putchar_fd(nb + '0', fd);
 }

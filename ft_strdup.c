@@ -6,13 +6,13 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:23:16 by pbumidan          #+#    #+#             */
-/*   Updated: 2023/10/31 01:28:26 by pbumidan         ###   ########.fr       */
+/*   Updated: 2023/11/05 23:11:24 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+static char	*ft_cpy(char *dest, const char *src)
 {
 	int	x;
 
@@ -40,7 +40,7 @@ char	*ft_strdup(const char *s1)
 	else if (duplicate != NULL)
 	{
 		{
-			ft_strcpy(duplicate, s1);
+			ft_cpy(duplicate, s1);
 		}
 		return (duplicate);
 	}
