@@ -6,7 +6,7 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:23:16 by pbumidan          #+#    #+#             */
-/*   Updated: 2023/11/05 23:11:24 by pbumidan         ###   ########.fr       */
+/*   Updated: 2023/11/18 21:35:20 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*ft_cpy(char *dest, const char *src)
 {
-	int	x;
+	size_t	x;
 
 	x = 0;
 	while (src [x])
