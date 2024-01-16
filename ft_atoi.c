@@ -6,21 +6,11 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 22:10:41 by pbumidan          #+#    #+#             */
-/*   Updated: 2023/11/19 17:25:40 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:38:16 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_rmspace(char *str)
-{
-	size_t	x;
-
-	x = 0;
-	while (str[x] == 32 || (str[x] >= 9 && str[x] <= 13))
-		x++;
-	return (str + x);
-}
 
 int	ft_atoi(const char *str)
 {

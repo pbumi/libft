@@ -6,9 +6,12 @@
 #    By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 18:34:14 by pbumidan          #+#    #+#              #
-#    Updated: 2023/11/21 20:38:57 by pbumidan         ###   ########.fr        #
+#    Updated: 2024/01/16 18:05:34 by pbumidan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#colours
+GREEN = \033[0;92m
 
 SRCS = ft_isalpha.c \
 	ft_isalnum.c \
@@ -73,17 +76,20 @@ CFLAGS = -Wall -Wextra -Werror
 	@touch .bonus
 
 $(NAME): $(OBJS) $(LIBH)
-	ar -rcs $(NAME) $^ 
+	ar -rcs $(NAME) $^
+	@echo "$(GREEN)libft.a has been compiled!"
 
 bonus: .bonus
 
 all: $(NAME)
 
 clean: 
-	rm -f $(OBJS) $(BOJS) .bonus 
+	rm -f $(OBJS) $(BOJS) .bonus
+	@echo "$(GREEN)The object files have been removed!"
 
-fclean: clean
-	rm -f $(NAME)
+fclean:
+	rm -f $(NAME) $(OBJS)
+	@echo "$(GREEN)The object files and library file have been removed!"
 
 re: fclean all
 
