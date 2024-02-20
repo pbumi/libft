@@ -6,7 +6,7 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:37:00 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/01/16 18:02:15 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/02/11 22:22:14 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,9 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
+long	ft_atol(char *str);
+void	ft_putstr(char *str);
+int		x_isdigit(char c);
+int		x_issign(char c);
 
 #endif

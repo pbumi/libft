@@ -6,12 +6,13 @@
 #    By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 18:34:14 by pbumidan          #+#    #+#              #
-#    Updated: 2024/01/16 18:05:34 by pbumidan         ###   ########.fr        #
+#    Updated: 2024/02/16 20:06:35 by pbumidan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#colours
-GREEN = \033[0;92m
+NAME = libft.a
+
+LIBH = libft.h
 
 SRCS = ft_isalpha.c \
 	ft_isalnum.c \
@@ -47,6 +48,10 @@ SRCS = ft_isalpha.c \
 	ft_putnbr_fd.c \
 	ft_split.c \
 	ft_itoa.c \
+	ft_atol.c \
+	x_isdigit.c \
+	x_issign.c \
+	ft_putstr.c \
 
 BSRCS = ft_lstadd_back_bonus.c \
 	ft_lstlast_bonus.c \
@@ -62,10 +67,6 @@ OBJS := $(SRCS:.c=.o)
 
 BOJS := $(BSRCS:.c=.o)
 
-NAME = libft.a
-
-LIBH = libft.h
-
 CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c $(LIBH) 
@@ -77,7 +78,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 $(NAME): $(OBJS) $(LIBH)
 	ar -rcs $(NAME) $^
-	@echo "$(GREEN)libft.a has been compiled!"
+	@echo "$(GREEN)libft library compiled!$(NC)"
 
 bonus: .bonus
 
@@ -85,12 +86,18 @@ all: $(NAME)
 
 clean: 
 	rm -f $(OBJS) $(BOJS) .bonus
-	@echo "$(GREEN)The object files have been removed!"
+	@echo "$(YELLOW)The libft object files have been removed!$(NC)"
 
 fclean:
-	rm -f $(NAME) $(OBJS)
-	@echo "$(GREEN)The object files and library file have been removed!"
+	rm -f $(NAME) $(OBJS) $(BOJS)
+	@echo "$(YELLOW)The libft object files and libft.a have been removed!$(NC)"
 
 re: fclean all
 
 .PHONY: all clean fclean re bonus
+
+#colours
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+CYAN = \033[0;96m
+NC = \033[0m
