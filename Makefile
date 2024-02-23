@@ -6,7 +6,7 @@
 #    By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 18:34:14 by pbumidan          #+#    #+#              #
-#    Updated: 2024/02/16 20:06:35 by pbumidan         ###   ########.fr        #
+#    Updated: 2024/02/21 20:20:34 by pbumidan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ clean:
 	@echo "$(YELLOW)The libft object files have been removed!$(NC)"
 
 fclean:
-	rm -f $(NAME) $(OBJS) $(BOJS)
+	rm -f $(NAME) $(OBJS) $(BOJS) .bonus
 	@echo "$(YELLOW)The libft object files and libft.a have been removed!$(NC)"
 
 re: fclean all
