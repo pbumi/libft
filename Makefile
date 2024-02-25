@@ -6,7 +6,7 @@
 #    By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 18:34:14 by pbumidan          #+#    #+#              #
-#    Updated: 2024/02/21 20:20:34 by pbumidan         ###   ########.fr        #
+#    Updated: 2024/02/25 17:23:08 by pbumidan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ CFLAGS = -Wall -Wextra -Werror
 	
 .bonus: $(BOJS) $(LIBH)
 	ar -rcs $(NAME) $^
+	@echo "$(GREEN)libft bonus compiled!$(NC)"
 	@touch .bonus
 
 $(NAME): $(OBJS) $(LIBH)
@@ -82,7 +83,7 @@ $(NAME): $(OBJS) $(LIBH)
 
 bonus: .bonus
 
-all: $(NAME)
+all: $(NAME) bonus
 
 clean: 
 	rm -f $(OBJS) $(BOJS) .bonus
@@ -90,7 +91,7 @@ clean:
 
 fclean:
 	rm -f $(NAME) $(OBJS) $(BOJS) .bonus
-	@echo "$(YELLOW)The libft object files and libft.a have been removed!$(NC)"
+	@echo "$(YELLOW)All the libft files have been removed!$(NC)"
 
 re: fclean all
 
