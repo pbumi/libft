@@ -6,7 +6,7 @@
 #    By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 18:34:14 by pbumidan          #+#    #+#              #
-#    Updated: 2024/02/25 17:23:08 by pbumidan         ###   ########.fr        #
+#    Updated: 2024/03/25 20:01:07 by pbumidan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,15 +70,15 @@ BOJS := $(BSRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c $(LIBH) 
-	cc $(CFLAGS) -c $< -o $@  -I $(LIBH)
+	@cc $(CFLAGS) -c $< -o $@  -I $(LIBH)
 	
 .bonus: $(BOJS) $(LIBH)
-	ar -rcs $(NAME) $^
+	@ar -rcs $(NAME) $^
 	@echo "$(GREEN)libft bonus compiled!$(NC)"
 	@touch .bonus
 
 $(NAME): $(OBJS) $(LIBH)
-	ar -rcs $(NAME) $^
+	@ar -rcs $(NAME) $^
 	@echo "$(GREEN)libft library compiled!$(NC)"
 
 bonus: .bonus
@@ -86,11 +86,11 @@ bonus: .bonus
 all: $(NAME) bonus
 
 clean: 
-	rm -f $(OBJS) $(BOJS) .bonus
+	@rm -f $(OBJS) $(BOJS) .bonus
 	@echo "$(YELLOW)The libft object files have been removed!$(NC)"
 
 fclean:
-	rm -f $(NAME) $(OBJS) $(BOJS) .bonus
+	@rm -f $(NAME) $(OBJS) $(BOJS) .bonus
 	@echo "$(YELLOW)All the libft files have been removed!$(NC)"
 
 re: fclean all
