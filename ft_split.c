@@ -6,11 +6,12 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 23:33:55 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/04/12 17:27:18 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:28:21 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static char	**freeres(char **res, size_t x)
 {
