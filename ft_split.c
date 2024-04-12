@@ -6,7 +6,7 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 23:33:55 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/04/12 17:28:21 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:29:33 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ char	**ft_split(char const *s, char c)
 	char	**res;
 	size_t	size;
 
+	printf("WWWWWW");
 	if (s == NULL)
 	{
 		return (NULL);
 	}
-	printf("WWWWWW");
 	size = ft_mallocsize(s, c);
 	res = (char **)malloc((sizeof(char *)) * (size + 1));
 	if (res == NULL)
