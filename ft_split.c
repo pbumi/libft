@@ -6,7 +6,7 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 23:33:55 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/04/12 17:30:30 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:44:27 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ static size_t	ft_mallocsize(const char *str, char c)
 
 	i = 0;
 	count = 0;
+	if (!str)
+	{
+		return(0);
+	}
 	while (str[i])
 	{
 		while (str[i] == c)
