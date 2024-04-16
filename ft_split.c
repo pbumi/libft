@@ -6,11 +6,26 @@
 /*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 23:33:55 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/04/16 18:59:46 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:08:13 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*NOTES
+::::Parameters ::::
+_s: The string to be split.
+_c: The delimiter character.
+
+::::Return value ::::
+The array of new strings resulting from the split.
+-NULL if the allocation fails.
+
+::::Description ::::
+Allocates (with malloc(3)) and returns an array
+of strings obtained by splitting ’s’ using the
+character ’c’ as a delimiter. The array must end
+with a NULL pointer.*/
 
 static char	**freeres(char **res, size_t x)
 {
@@ -86,6 +101,7 @@ char	**ft_split(char const *s, char c)
 	char	**res;
 	size_t	size;
 
+	size = 0;
 	if (s == NULL)
 	{
 		return (NULL);
@@ -99,20 +115,7 @@ char	**ft_split(char const *s, char c)
 	res = ft_splitter(res, s, c);
 	return (res);
 }
-/*NOTES
-::::Parameters ::::
-_s: The string to be split.
-_c: The delimiter character.
 
-::::Return value ::::
-The array of new strings resulting from the split.
--NULL if the allocation fails.
-
-::::Description ::::
-Allocates (with malloc(3)) and returns an array
-of strings obtained by splitting ’s’ using the
-character ’c’ as a delimiter. The array must end
-with a NULL pointer.*/
 
 // static size_t	ft_get_wrd_len(char const *s, char const c)
 // {
