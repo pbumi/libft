@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: pbumidan <pbumidan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 18:37:00 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/02/11 22:22:14 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:10:58 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ long	ft_atol(char *str);
 void	ft_putstr(char *str);
 int		x_isdigit(char c);
 int		x_issign(char c);
+size_t	x_isspace(char **argv, int z);
 
 #endif
