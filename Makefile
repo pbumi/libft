@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+         #
+#    By: pbumidan <pbumidan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 18:34:14 by pbumidan          #+#    #+#              #
-#    Updated: 2024/03/25 20:01:07 by pbumidan         ###   ########.fr        #
+#    Updated: 2024/05/21 20:09:03 by pbumidan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS = ft_isalpha.c \
 	x_isdigit.c \
 	x_issign.c \
 	ft_putstr.c \
+	x_isspace.c \
 
 BSRCS = ft_lstadd_back_bonus.c \
 	ft_lstlast_bonus.c \
