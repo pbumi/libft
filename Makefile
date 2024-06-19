@@ -71,7 +71,7 @@ BOJS := $(BSRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c $(LIBH) 
-	@cc $(CFLAGS) -c $< -o $@  -I $(LIBH)
+	@cc $(CFLAGS) -c $< -o $@  $(LIBH)
 	
 .bonus: $(BOJS) $(LIBH)
 	@ar -rcs $(NAME) $^
