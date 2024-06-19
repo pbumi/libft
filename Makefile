@@ -47,6 +47,7 @@ SRCS = ft_isalpha.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
 	ft_split.c \
+	ft_strcmp.c \
 	ft_itoa.c \
 	ft_atol.c \
 	x_isdigit.c \
@@ -71,15 +72,15 @@ BOJS := $(BSRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c $(LIBH) 
-	@cc $(CFLAGS) -c $< -o $@  $(LIBH)
+	@cc $(CFLAGS) -c $< -o $@ $(LIBH)
 	
 .bonus: $(BOJS) $(LIBH)
-	@ar -rcs $(NAME) $^
+	@ar rcs $(NAME) $^
 	@echo "$(GREEN)libft bonus compiled!$(NC)"
 	@touch .bonus
 
 $(NAME): $(OBJS) $(LIBH)
-	@ar -rcs $(NAME) $^
+	@ar rcs $(NAME) $^
 	@echo "$(GREEN)libft library compiled!$(NC)"
 
 bonus: .bonus
