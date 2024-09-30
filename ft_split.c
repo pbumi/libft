@@ -28,7 +28,7 @@ character ’c’ as a delimiter. The array must end
 with a NULL pointer.*/
 static char	**freeres(char **res, size_t x)
 {
-	while (x >= 0)
+	while (x != 0)
 	{
 		free(res[x - 1]);
 		x--;
