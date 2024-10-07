@@ -57,12 +57,13 @@ BOBJECTS = $(BSRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(BOBJECTS)
-	ar rcs $(NAME) $(OBJECTS) $(BOBJECTS)
+	@ar rcs $(NAME) $(OBJECTS) $(BOBJECTS)
+	@echo "$(GREEN)libft compiled!$(NC)"
 
 bonus: .bonus
 
 .bonus: $(OBJECTS) $(BOBJECTS)
-	ar rcs $(NAME) $(OBJECTS) $(BOBJECTS)
+	@ar rcs $(NAME) $(OBJECTS) $(BOBJECTS)
 	touch .bonus
 
 clean:
