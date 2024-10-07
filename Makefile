@@ -77,3 +77,9 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re bonus
+
+#colours
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+CYAN = \033[0;96m
+NC = \033[0m
