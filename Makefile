@@ -66,10 +66,12 @@ bonus: .bonus
 	touch .bonus
 
 clean:
-	rm -f $(OBJECTS) $(BOBJECTS) .bonus
+	rm -f $(OBJECTS) $(BOBJECTS)
+	@echo "$(YELLOW)All the $(NAME) objects have been removed!$(NC)"
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) .bonus
+	@echo "$(YELLOW)All the $(NAME) files have been removed!$(NC)"
 
 re: fclean all
 
