@@ -3,41 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbumidan <pbumidan@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: pbumidan <pbumidan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:40:33 by pbumidan          #+#    #+#             */
-/*   Updated: 2023/11/16 14:22:31 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:59:16 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substr;
-	size_t	slen;
+	char	*str;
 	size_t	i;
 
-	if (s == NULL)
-		return (NULL);
-	slen = ft_strlen(s);
-	if (start >= slen)
+	if (start >= ft_strlen(s))
 		len = 0;
-	if (len > (slen - start))
-		len = (slen - start);
-	substr = (char *)malloc((sizeof(char)) * (len + 1));
-	if (!substr)
+	if (len >= ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	str = (char *) malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
 		return (NULL);
 	i = 0;
 	while (i < len)
 	{
-		substr[i] = s[start];
+		str[i] = s[start + i];
 		i++;
-		start++;
 	}
-	substr[i] = '\0';
-	return (substr);
+	str[i] = '\0';
+	return (str);
 }
+
+// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// {
+// 	char	*substr;
+// 	size_t	slen;
+// 	size_t	i;
+
+// 	if (s == NULL)
+// 		return (NULL);
+// 	slen = ft_strlen(s);
+// 	if (start >= slen)
+// 		len = 0;
+// 	if (len > (slen - start))
+// 		len = (slen - start);
+// 	substr = (char *)malloc((sizeof(char)) * (len + 1));
+// 	if (!substr)
+// 		return (NULL);
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		substr[i] = s[start];
+// 		i++;
+// 		start++;
+// 	}
+// 	substr[i] = '\0';
+// 	return (substr);
+// }
 /*
 NOTES
 ::::Parameters::::
