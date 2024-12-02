@@ -6,7 +6,7 @@
 /*   By: pbumidan <pbumidan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 23:33:55 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/12/02 14:20:14 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:24:47 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,4 +391,8 @@ char	**ft_split(char const *s, char const c)
 	if (!allocate_mem(s, c, strings))
 		return (NULL);
 	return (strings);
-}
+}*/
+
+
+
+
