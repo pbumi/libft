@@ -6,7 +6,7 @@
 /*   By: pbumidan <pbumidan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:40:33 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/12/02 13:59:16 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:45:22 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,50 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	size_t	i;
+	char			*substr;
+	size_t			i;
+	size_t			s_len;
 
-	if (start >= ft_strlen(s))
-		len = 0;
-	if (len >= ft_strlen(s) - start)
-		len = ft_strlen(s) - start;
-	str = (char *) malloc(sizeof(char) * (len + 1));
-	if (str == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len)
+	s_len = ft_strlen(s);
+	if (len == 0 || start > s_len || s_len == 0)
+		return (ft_strdup(""));
+	if ((s_len - start) < len)
+		substr = malloc(sizeof(char) * (s_len - start + 1));
+	else
+		substr = malloc(sizeof(char) * (len + 1));
+	if (!substr)
+		return (0);
+	while ((i < len && s[start + i]))
 	{
-		str[i] = s[start + i];
+		substr[i] = s[start + i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	substr[i] = 0;
+	return (substr);
 }
+
+// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// {
+// 	char	*str;
+// 	size_t	i;
+
+// 	if (start >= ft_strlen(s))
+// 		len = 0;
+// 	if (len >= ft_strlen(s) - start)
+// 		len = ft_strlen(s) - start;
+// 	str = (char *) malloc(sizeof(char) * (len + 1));
+// 	if (str == NULL)
+// 		return (NULL);
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		str[i] = s[start + i];
+// 		i++;
+// 	}
+// 	str[i] = '\0';
+// 	return (str);
+// }
 
 // char	*ft_substr(char const *s, unsigned int start, size_t len)
 // {
