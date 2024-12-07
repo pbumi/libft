@@ -6,88 +6,11 @@
 /*   By: pbumidan <pbumidan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 23:33:55 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/12/07 15:54:30 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:57:55 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char *ft_strncpy(char *s1, const char *s2, int n)
-{
-    int i = 0;
-
-    while (i < n && s2[i])
-    {
-        s1[i] = s2[i];
-        i++;
-    }
-    s1[i] = '\0'; // Ensure the string is null-terminated
-    return s1;
-}
-
-static size_t ft_mallocsize(const char *s, char c)
-{
-    size_t count = 0;
-    size_t i = 0;
-
-    while (s[i])
-    {
-        while (s[i] == c) // Skip the delimiter character
-            i++;
-        if (s[i] != c && s[i] != '\0') // Found a non-delimited section
-        {
-            count++;
-            while (s[i] && s[i] != c) // Skip to the end of the current word
-                i++;
-        }
-    }
-    return count;
-}
-
-char **ft_split(const char *s, char c)
-{
-    char **res;
-    size_t size;
-    size_t i = 0, start = 0, res_i = 0;
-
-    if (s == NULL)
-        return NULL;
-
-    size = ft_mallocsize(s, c); // Count the number of substrings
-    res = (char **)malloc(sizeof(char *) * (size + 1)); // Allocate memory for the result
-    if (res == NULL)
-        return NULL;
-
-    while (s[i] != '\0')
-    {
-        while (s[i] == c) // Skip the delimiters
-            i++;
-
-        start = i;
-        while (s[i] != c && s[i] != '\0') // Find the end of the current word
-            i++;
-
-        if (i > start) // If we found a non-empty word
-        {
-            res[res_i] = (char *)malloc(sizeof(char) * (i - start + 1)); // Allocate memory for the word
-            if (res[res_i] == NULL)
-            {
-                // Free previously allocated memory if allocation fails
-                while (res_i > 0)
-                {
-                    free(res[--res_i]);
-                }
-                free(res);
-                return NULL;
-            }
-            ft_strncpy(res[res_i], &s[start], i - start); // Copy the substring
-            res_i++;
-        }
-    }
-    res[res_i] = NULL; // Null-terminate the array of strings
-    return res;
-}
-
 
 // static char	**freeres(char **res, size_t x)
 // {
@@ -385,7 +308,7 @@ char	**ft_split(char const *s, char const c)
 
 
 /*   VERSION 3 */
-/*
+
 static char	**ft_malloc_error(char **tab)
 {
 	size_t	i;
@@ -471,4 +394,82 @@ char	**ft_split(char const *s, char c)
 	}
 	tab[i] = NULL;
 	return (tab);
-} */
+}
+
+/*VErsion 4*/
+
+// char *ft_strncpy(char *s1, const char *s2, int n)
+// {
+//     int i = 0;
+
+//     while (i < n && s2[i])
+//     {
+//         s1[i] = s2[i];
+//         i++;
+//     }
+//     s1[i] = '\0'; // Ensure the string is null-terminated
+//     return s1;
+// }
+
+// static size_t ft_mallocsize(const char *s, char c)
+// {
+//     size_t count = 0;
+//     size_t i = 0;
+
+//     while (s[i])
+//     {
+//         while (s[i] == c) // Skip the delimiter character
+//             i++;
+//         if (s[i] != c && s[i] != '\0') // Found a non-delimited section
+//         {
+//             count++;
+//             while (s[i] && s[i] != c) // Skip to the end of the current word
+//                 i++;
+//         }
+//     }
+//     return count;
+// }
+
+// char **ft_split(const char *s, char c)
+// {
+//     char **res;
+//     size_t size;
+//     size_t i = 0, start = 0, res_i = 0;
+
+//     if (s == NULL)
+//         return NULL;
+
+//     size = ft_mallocsize(s, c); // Count the number of substrings
+//     res = (char **)malloc(sizeof(char *) * (size + 1)); // Allocate memory for the result
+//     if (res == NULL)
+//         return NULL;
+
+//     while (s[i] != '\0')
+//     {
+//         while (s[i] == c) // Skip the delimiters
+//             i++;
+
+//         start = i;
+//         while (s[i] != c && s[i] != '\0') // Find the end of the current word
+//             i++;
+
+//         if (i > start) // If we found a non-empty word
+//         {
+//             res[res_i] = (char *)malloc(sizeof(char) * (i - start + 1)); // Allocate memory for the word
+//             if (res[res_i] == NULL)
+//             {
+//                 // Free previously allocated memory if allocation fails
+//                 while (res_i > 0)
+//                 {
+//                     free(res[--res_i]);
+//                 }
+//                 free(res);
+//                 return NULL;
+//             }
+//             ft_strncpy(res[res_i], &s[start], i - start); // Copy the substring
+//             res_i++;
+//         }
+//     }
+//     res[res_i] = NULL; // Null-terminate the array of strings
+//     return res;
+// }
