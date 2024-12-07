@@ -6,92 +6,48 @@
 /*   By: pbumidan <pbumidan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 23:33:55 by pbumidan          #+#    #+#             */
-/*   Updated: 2024/12/07 15:38:51 by pbumidan         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:48:47 by pbumidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**freeres(char **res, size_t x)
+char	**ft_split(char *str)
 {
-    if (res == NULL)
-        return (NULL);
-    while (x != 0)
-    {
-        free(res[x - 1]);
-        x--;
-    }
-    free(res);
-    return (NULL);
-}
-
-static size_t	ft_mallocsize(const char *str, char c)
-{
-	size_t	count;
-	size_t	i;
-
-	i = 0;
-	count = 0;
-	if (!str)
-	{
-		return (count);
-	}
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	int wc = 0;
+	
 	while (str[i])
 	{
-		while (str[i] == c)
-		{
+		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
 			i++;
-		}
-		if (str[i] != c && str[i] != '\0')
-		{
-			count++;
-		}
-		while (str[i] != c && str[i] != '\0')
-		{
+		if (str[i])
+			wc++;
+		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
 			i++;
+	}
+	
+	char **out = (char **)malloc(sizeof(char *) * (wc + 1));
+	i = 0;
+	
+	while (str[i])
+	{
+		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+			i++;
+		j = i;
+		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
+			i++;
+		if (i > j)
+		{
+			out[k] = (char *)malloc(sizeof(char) * ((i - j) + 1));
+			ft_strncpy(out[k++], &str[j], i - j);
 		}
 	}
-	return (count);
+	out[k] = NULL;
+	return (out);
 }
-
-char **ft_split(char const *s, char c)
-{
-    char **res;
-    size_t size;
-    size_t i = 0, start = 0, res_i = 0;
-
-    if (s == NULL)
-        return NULL;
-
-    size = ft_mallocsize(s, c); // Count number of substrings
-    res = (char **)malloc(sizeof(char *) * (size + 1));
-    if (res == NULL)
-        return NULL;
-
-    while (s[i] != '\0')
-    {
-        while (s[i] == c) // Skip delimiters
-            i++;
-
-        start = i;
-        while (s[i] != c && s[i] != '\0') // Find the end of the word
-            i++;
-
-        if (i > start) // If we have a valid substring
-        {
-            res[res_i] = ft_substr(s, start, i - start); // Extract substring
-            if (res[res_i] == NULL)
-            {
-                freeres(res, res_i); // Free memory if allocation fails
-                return NULL;
-            }
-            res_i++;
-        }
-    }
-    res[res_i] = NULL; // NULL-terminate the array
-    return res;
-}
-
 
 // static char	**freeres(char **res, size_t x)
 // {
