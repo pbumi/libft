@@ -36,7 +36,6 @@ SRC = ft_atoi.c \
 	  ft_putnbr_fd.c \
       ft_strcmp.c \
 	  ft_putstr.c \
-	  ft_atol.c \
 
 BSRC = ft_lstnew_bonus.c \
 	   ft_lstadd_front_bonus.c \
